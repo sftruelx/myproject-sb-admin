@@ -5,65 +5,69 @@
 </head>
 <body>
 <div id="page-wrapper">
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">已挂号病人列表</h1>
-        </div>
-        <!-- /.col-lg-12 -->
-    </div>
+    <br>
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-12">
-            <%--            <div class="panel-heading">--%>
-            <div id="toolbar">
-                <div class="form-inline" role="form">
-                    <div class="form-group">
-                        <select id="queryStatus" name="queryStatus" class="form-control">
-                            <option value="2">已缴费</option>
-                            <option value="3">已结束</option>
-                        </select>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3>已挂号病人列表</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="dataTable_wrapper">
+                        <div id="toolbar">
+                            <div class="form-inline" role="form">
+                                <div class="form-group">
+                                    <select id="queryStatus" name="queryStatus" class="form-control">
+                                        <option value="2">已缴费</option>
+                                        <option value="3">已结束</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input name="name" class="form-control" type="text" placeholder="姓名">
+                                    <input name="department" hidden type="text" value="幼儿保健科">
+                                </div>
+                                <button id="ok" type="submit" class="btn btn-info">查询</button>
+                            </div>
+                        </div>
+                        <table id="table"
+                               data-classes="table table-no-bordered"
+                               data-toggle="table"
+                               data-height="660"
+                               data-toolbar="#toolbar"
+                               data-show-toggle="true"
+                               data-query-params="queryParams"
+                               data-show-columns="true"
+                               data-show-refresh="true"
+                               data-url="/demo/getPatient"
+                               data-height="400"
+                               data-side-pagination="server"
+                               data-pagination="true"
+                               data-page-list="[5, 10, 20]"
+                               data-sort-name="createDateStr"
+                               data-sort-order="desc">
+                            <thead>
+                            <tr>
+                                <th data-field="no">门诊号码</th>
+                                <th data-field="name">姓名</th>
+                                <th data-field="age">年龄</th>
+                                <th data-field="birthdayStr">出生日期</th>
+                                <th data-field="department">挂号科室</th>
+                                <%--                         <th data-field="status">状态</th>--%>
+                                <th data-field="createDateStr" data-sortable="true">挂号日期</th>
+                                <th data-field="other" data-formatter="otherFormatter">功能</th>
+                            </tr>
+                            </thead>
+                        </table>
+                        <%-- </div>--%>
                     </div>
-                    <div class="form-group">
-                        <input name="name" class="form-control" type="text" placeholder="姓名">
-                        <input name="department" hidden type="text"value="幼儿保健科">
-                    </div>
-                    <button id="ok" type="submit" class="btn btn-info">查询</button>
                 </div>
             </div>
-            <table id="table"
-                   class="table"
-                   data-toggle="table"
-                   data-height="660"
-                   data-toolbar="#toolbar"
-                   data-show-toggle="true"
-                   data-query-params="queryParams"
-                   data-show-columns="true"
-                   data-show-refresh="true"
-                   data-url="/demo/getPatient"
-                   data-height="400"
-                   data-side-pagination="server"
-                   data-pagination="true"
-                   data-page-list="[5, 10, 20]"
-                   data-sort-name="createDateStr"
-                   data-sort-order="desc">
-                <thead>
-                <tr>
-                    <th data-field="no">门诊号码</th>
-                    <th data-field="name">姓名</th>
-                    <th data-field="age">年龄</th>
-                    <th data-field="birthdayStr">出生日期</th>
-                    <th data-field="department">挂号科室</th>
-                    <%--                         <th data-field="status">状态</th>--%>
-                    <th data-field="createDateStr" data-sortable="true">挂号日期</th>
-                    <th data-field="other" data-formatter="otherFormatter">功能</th>
-                </tr>
-                </thead>
-            </table>
-            <%-- </div>--%>
         </div>
     </div>
 </div>
-<div style="margin: 150px auto;height: 800px" id="user-dialog" class="modal modal_align fade bs-example-modal-lg" tabindex="-1"
+<div style="margin: 150px auto;height: 800px" id="user-dialog" class="modal modal_align fade bs-example-modal-lg"
+     tabindex="-1"
      role="dialog"
      aria-labelledby="myLargeModalLabel" style="display:none;">
     <div class="modal-dialog modal-lg">
@@ -89,9 +93,9 @@
                                 <div class="col-sm-4">
                                     <input type="text" class="form-control input-sm" name="gender" id="gender"/>
                                 </div>
-<%--
+                                <%--
 
-                                --%>
+                                                                --%>
                             </div>
                         </div>
                     </div>

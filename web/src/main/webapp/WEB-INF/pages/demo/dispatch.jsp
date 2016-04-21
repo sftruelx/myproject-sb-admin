@@ -5,67 +5,72 @@
 </head>
 <body>
 <div id="page-wrapper">
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">已挂号病人列表</h1>
-        </div>
-        <!-- /.col-lg-12 -->
-    </div>
+    <br>
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-12">
-            <div class="panel-heading">
-                <div id="toolbar">
-                    <div class="form-inline" role="form">
-                        <div class="form-group">
-                            <div class="btn-group" role="group" aria-label="...">
-                                <button onclick="onAddUserClicked()" type="button" class="btn btn-success">新增</button>
-                                <button type="button" class="btn btn-warning">删除</button>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3>已挂号病人列表</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="dataTable_wrapper">
+                        <div id="toolbar">
+                            <div class="form-inline" role="form">
+                                <div class="form-group">
+                                    <div class="btn-group" role="group" aria-label="...">
+                                        <button onclick="onAddUserClicked()" type="button" class="btn btn-success">
+                                            新增
+                                        </button>
+                                        <button type="button" class="btn btn-warning">删除</button>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <select id="queryStatus" name="queryStatus" class="form-control">
+                                        <option value="1">未缴费</option>
+                                        <option value="2">已缴费</option>
+                                        <option value="3">sd3</option>
+                                        <option value="4">s4</option>
+                                        <option value="5">d5</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input name="name" class="form-control" type="text" placeholder="姓名">
+                                </div>
+                                <button id="ok" type="submit" class="btn btn-info">查询</button>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <select id="queryStatus" name="queryStatus" class="form-control">
-                                <option value="1">未缴费</option>
-                                <option value="2">已缴费</option>
-                                <option value="3">sd3</option>
-                                <option value="4">s4</option>
-                                <option value="5">d5</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <input name="name" class="form-control" type="text" placeholder="姓名">
-                        </div>
-                        <button id="ok" type="submit" class="btn btn-info">查询</button>
+                        <table id="table"
+                               data-classes="table table-no-bordered"
+                               data-toggle="table"
+                               data-height="680"
+                               data-toolbar="#toolbar"
+                               data-show-toggle="true"
+                               data-query-params="queryParams"
+                               data-show-columns="true"
+                               data-show-refresh="true"
+                               data-url="/demo/getPatient"
+                               data-height="400"
+                               data-side-pagination="server"
+                               data-pagination="true"
+                               data-page-list="[10]"
+                               data-sort-name="createDateStr"
+                               data-sort-order="desc">
+                            <thead>
+                            <tr>
+                                <th data-field="id">门诊号码</th>
+                                <th data-field="name">姓名</th>
+                                <th data-field="age">年龄</th>
+                                <th data-field="birthdayStr">出生日期</th>
+                                <th data-field="department">挂号科室</th>
+                                <th data-field="status">状态</th>
+                                <th data-field="createDateStr" data-sortable="true">挂号日期</th>
+                                <th data-field="other" data-formatter="otherFormatter">功能</th>
+                            </tr>
+                            </thead>
+                        </table>
                     </div>
                 </div>
-                <table id="table"
-                       data-toggle="table"
-                       data-height="600"
-                       data-toolbar="#toolbar"
-                       data-show-toggle="true"
-                       data-query-params="queryParams"
-                       data-show-columns="true"
-                       data-show-refresh="true"
-                       data-url="/demo/getPatient"
-                       data-height="400"
-                       data-side-pagination="server"
-                       data-pagination="true"
-                       data-page-list="[10]"
-                       data-sort-name="createDateStr"
-                       data-sort-order="desc">
-                    <thead>
-                    <tr>
-                        <th data-field="id">门诊号码</th>
-                        <th data-field="name">姓名</th>
-                        <th data-field="age">年龄</th>
-                        <th data-field="birthdayStr">出生日期</th>
-                        <th data-field="department">挂号科室</th>
-                        <th data-field="status">状态</th>
-                        <th data-field="createDateStr" data-sortable="true">挂号日期</th>
-                        <th data-field="other" data-formatter="otherFormatter">功能</th>
-                    </tr>
-                    </thead>
-                </table>
             </div>
         </div>
     </div>

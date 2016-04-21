@@ -62,7 +62,7 @@
 
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-        <img src="${ctx}/images/logo-01.png"/>
+        <img src="${ctx}/images/logo-01.png" style="width: 20%"/>
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
