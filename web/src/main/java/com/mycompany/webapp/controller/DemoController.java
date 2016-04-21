@@ -101,4 +101,10 @@ public class DemoController {
         }
         return new ModelAndView("demo/guide", model.asMap());
     }
+
+    @RequestMapping(value = "/nutritionalDiet")
+    public String nutritionalDiet() {
+        return "/demo/nutritionalDiet";
+    }
+
 }

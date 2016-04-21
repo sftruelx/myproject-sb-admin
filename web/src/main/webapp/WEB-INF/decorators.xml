@@ -7,6 +7,7 @@
         <pattern>/demo/bind*</pattern>
         <pattern>/demo/lore*</pattern>
         <pattern>/demo/guideList/*</pattern>
+        <pattern>/demo/nutritionalDiet*</pattern>
     </excludes> 
     <decorator name="default" page="default.jsp">
         <pattern>/test*</pattern>

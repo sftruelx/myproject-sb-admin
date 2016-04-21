@@ -14,7 +14,7 @@
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
-    <form:form action="#" method="post" commandName="patient"  class="form-horizontal">
+    <form:form action="#" method="post" commandName="patient" class="form-horizontal">
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
@@ -22,20 +22,20 @@
                         <div class="form-group">
                             <label class="col-sm-1 control-label">姓名</label>
                             <div class="col-sm-2">
-                                <form:input  cssClass="form-control input-sm" path="name"/>
+                                <form:input cssClass="form-control input-sm" path="name"/>
 
                             </div>
                             <label class="col-sm-1 control-label">性别</label>
                             <div class="col-sm-2">
-                                <form:input  cssClass="form-control input-sm" path="gender"/>
+                                <form:input cssClass="form-control input-sm" path="gender"/>
                             </div>
                             <label class="col-sm-1 control-label">出生日期</label>
                             <div class="col-sm-2">
-                                <form:input  cssClass="form-control input-sm" path="birthdayStr"/>
+                                <form:input cssClass="form-control input-sm" path="birthdayStr"/>
                             </div>
                             <label class="col-sm-1 control-label">年龄</label>
                             <div class="col-sm-2">
-                                <form:input  cssClass="form-control input-sm" path="age"/>
+                                <form:input cssClass="form-control input-sm" path="age"/>
                             </div>
                         </div>
 
@@ -43,15 +43,15 @@
                         <div class="form-group">
                             <label class="col-sm-1 control-label">挂号科室</label>
                             <div class="col-sm-2">
-                                <form:input  cssClass="form-control input-sm" path="department"/>
+                                <form:input cssClass="form-control input-sm" path="department"/>
                             </div>
                             <label class="col-sm-1 control-label">状态</label>
                             <div class="col-sm-2">
-                                <form:input  cssClass="form-control input-sm" path="status"/>
+                                <form:input cssClass="form-control input-sm" path="status"/>
                             </div>
                             <label class="col-sm-1 control-label">日期</label>
                             <div class="col-sm-2">
-                                <form:input  cssClass="form-control input-sm" path="createDateStr"/>
+                                <form:input cssClass="form-control input-sm" path="createDateStr"/>
                             </div>
                         </div>
                         <div class="row">
@@ -158,7 +158,6 @@
                         </div>
 
 
-
                     </div>
                 </div>
             </div>
@@ -167,8 +166,8 @@
         <div class="row">
             <div class="col-lg-12">
 
-                    <button type="submit" class="btn btn-primary"  onclick="gotow(${patient_id} )"> 确定</button>
-                    <button type="reset" class="btn btn-success"> 取消</button>
+                <button type="submit" class="btn btn-primary" onclick="gotow(${patient_id} )"> 确定</button>
+                <button type="reset" class="btn btn-success"> 取消</button>
 
             </div>
             <!-- /.col-lg-12 -->
@@ -178,7 +177,7 @@
 <script>
 
     function gotow(id) {
-        window.open ('/demo/guideList/'+id, 'newwindow');
+        window.open('/demo/guideList/' + id, 'newwindow');
     }
 </script>
 </body>
