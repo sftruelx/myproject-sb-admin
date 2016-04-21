@@ -296,7 +296,7 @@
                         <!-- /input-group -->
                     </li>
                     <li>
-                        <a href="/demo/test"><i class="fa fa-dashboard fa-fw"></i><b> 功能列表</b></a>
+                        <a href="#"><i class="fa fa-dashboard fa-fw"></i><b> 功能列表</b></a>
                     </li>
                     <li class="active">
                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 护士站 <span class="fa arrow"></span></a>

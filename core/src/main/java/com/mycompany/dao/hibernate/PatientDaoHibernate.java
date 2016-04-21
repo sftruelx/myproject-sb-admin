@@ -1,9 +1,8 @@
 package com.mycompany.dao.hibernate;
 
 import com.mycompany.dao.PatientDao;
-import com.mycompany.dao.RoleCopyDao;
 import com.mycompany.model.Patient;
-import com.mycompany.model.RoleCopy;
+import com.mycompany.model.Trainning;
 import com.mycompany.util.Pagination;
 import com.mycompany.util.QueryObject;
 import org.hibernate.Criteria;
@@ -13,7 +12,6 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by liaoxiang on 2016/4/13.
@@ -42,7 +40,7 @@ public class PatientDaoHibernate extends GenericDaoHibernate<Patient, Long> impl
             Criteria criteria = this.getSession().createCriteria(Patient.class);
 
             if (patient != null) {
-                if (patient.getName() != null) {
+                if (patient.getName() != null && !"".equals(patient.getName())) {
                     criteria.add(Restrictions.like("name", "%" + patient.getName() + "%"));
                 }
                 if (patient.getStatus() != null) {
@@ -55,9 +53,9 @@ public class PatientDaoHibernate extends GenericDaoHibernate<Patient, Long> impl
             criteria.setProjection(null);
             criteria.setFirstResult((pageNo - 1) * pageSize);
             criteria.setMaxResults(pageSize);
-            if("desc".equals(queryObject.getOrder())) {
+            if ("desc".equals(queryObject.getOrder())) {
                 criteria.addOrder(Order.desc("createDate"));
-            }else{
+            } else {
                 criteria.addOrder(Order.asc("createDate"));
             }
             List result = criteria.list();
@@ -70,7 +68,7 @@ public class PatientDaoHibernate extends GenericDaoHibernate<Patient, Long> impl
         }
     }
 
-    public Patient findByNameAndMobile(String name, String mobile){
+    public Patient findByNameAndMobile(String name, String mobile) {
         Criteria criteria = this.getSession().createCriteria(Patient.class);
         criteria.add(Restrictions.eq("name", name.trim()));
         criteria.add(Restrictions.eq("mobile", mobile.trim()));
@@ -78,4 +76,25 @@ public class PatientDaoHibernate extends GenericDaoHibernate<Patient, Long> impl
         return result.get(0);
     }
 
+    @Override
+    public Patient findByOpenId(String openId) {
+        Criteria criteria = this.getSession().createCriteria(Patient.class);
+        criteria.add(Restrictions.eq("openID", openId));
+        List<Patient> result = criteria.list();
+        if (result.size() == 0) {
+            return null;
+        }
+        return result.get(0);
+    }
+
+    @Override
+    public Trainning findByPatientId(Long patientId) {
+        Criteria criteria = this.getSession().createCriteria(Patient.class);
+        criteria.add(Restrictions.eq("patient_id", patientId));
+        List<Trainning> result = criteria.list();
+        if (result.size() == 0) {
+            return null;
+        }
+        return result.get(0);
+    }
 }

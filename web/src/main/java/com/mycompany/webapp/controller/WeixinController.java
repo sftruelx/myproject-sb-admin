@@ -3,10 +3,12 @@ package com.mycompany.webapp.controller;
 import com.github.sd4324530.fastweixin.handle.EventHandle;
 import com.github.sd4324530.fastweixin.handle.MessageHandle;
 import com.github.sd4324530.fastweixin.message.BaseMsg;
+import com.github.sd4324530.fastweixin.message.NewsMsg;
 import com.github.sd4324530.fastweixin.message.TextMsg;
 import com.github.sd4324530.fastweixin.message.req.BaseEvent;
 import com.github.sd4324530.fastweixin.message.req.TextReqMsg;
 import com.github.sd4324530.fastweixin.servlet.WeixinControllerSupport;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -79,9 +81,13 @@ public class WeixinController extends WeixinControllerSupport {
 
     @Override
     protected BaseMsg handleSubscribe(BaseEvent event) {
-        TextMsg textMsg = new TextMsg();
-        textMsg.add("你的账号" + event.getFromUserName() + "已关注儿童健康微信公众号，");
-        textMsg.addLink("请绑定账号", "http://hjwadmin.ngrok.cc/demo/bind?openId=" + event.getFromUserName());
-        return textMsg;
+    	NewsMsg newsMsg=new NewsMsg();
+		String title = "你的账号已关注儿童健康微信公众号，";
+		String description = "请点击查看全文或点击图片绑定账号再进行业务查询。";
+		String picUrl = "http://hjwadmin.ngrok.cc/images/banner2.jpg";
+		String url= "http://hjwadmin.ngrok.cc/bind?openId="+event.getFromUserName();
+		newsMsg.add(title, description, picUrl, url);			
+		//log.debug(DdJsonUtils.toJSONString(newsMsg));		
+		return newsMsg;
     }
 }

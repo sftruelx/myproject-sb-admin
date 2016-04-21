@@ -2,6 +2,7 @@ package com.mycompany.service.impl;
 
 import com.mycompany.dao.PatientDao;
 import com.mycompany.model.Patient;
+import com.mycompany.model.Trainning;
 import com.mycompany.service.PatientManager;
 import com.mycompany.util.Pagination;
 import com.mycompany.util.QueryObject;
@@ -25,13 +26,22 @@ public class PatientManagerImpl extends GenericManagerImpl<Patient, Long> implem
 
     @Override
     public Pagination findListByCondition(QueryObject queryObject, Patient patient) {
-        Pagination page = patientDao.findListByCondition(queryObject,patient);
+        Pagination page = patientDao.findListByCondition(queryObject, patient);
         return page;
     }
 
-    public Patient bindOpenID(String name, String mobile, String openID){
+    public Patient bindOpenID(String name, String mobile, String openID) {
         Patient patient = patientDao.findByNameAndMobile(name, mobile);
         patient.setOpenID(openID);
         return patientDao.save(patient);
+    }
+
+    public Patient findByOpenID(String openID) {
+        return patientDao.findByOpenId(openID);
+    }
+
+    @Override
+    public Trainning findByPatientId(Long patientId) {
+        return patientDao.findByPatientId(patientId);
     }
 }

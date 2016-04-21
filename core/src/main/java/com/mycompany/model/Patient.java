@@ -28,6 +28,8 @@ public class Patient extends BaseObject implements Serializable {
     private Date createDate;
     private String birthdayStr;
     private String createDateStr;
+    private String genderStr;
+    private String statusStr;
     private String mobile;
     private String openID;
 
@@ -148,6 +150,47 @@ public class Patient extends BaseObject implements Serializable {
 
     public void setBirthdayStr(String birthdayStr) {
         this.birthdayStr = birthdayStr;
+    }
+    @Transient
+    public String getGenderStr() {
+        if(gender!=null) {
+            if (gender == 1) {
+                return "男";
+            } else {
+                return "女";
+            }
+        }
+        return "";
+    }
+
+    public void setGenderStr(String genderStr) {
+        this.genderStr = genderStr;
+    }
+
+    @Transient
+    public String getStatusStr() {
+        String statusStr = "";
+        if(status!=null) {
+            switch (status) {
+                case 1:
+                    statusStr = "已分配";
+                    break;
+                case 2:
+                    statusStr = "已分派";
+                    break;
+                case 3:
+                    statusStr = "已完成";
+                    break;
+                case 4:
+                    statusStr = "已收费";
+                    break;
+            }
+        }
+        return statusStr;
+    }
+
+    public void setStatusStr(String statusStr) {
+        this.statusStr = statusStr;
     }
 
     @Transient

@@ -60,10 +60,11 @@
                             <tr>
                                 <th data-field="id">门诊号码</th>
                                 <th data-field="name">姓名</th>
+                                <th data-field="genderStr">姓名</th>
                                 <th data-field="age">年龄</th>
                                 <th data-field="birthdayStr">出生日期</th>
                                 <th data-field="department">挂号科室</th>
-                                <th data-field="status">状态</th>
+                                <th data-field="statusStr">状态</th>
                                 <th data-field="createDateStr" data-sortable="true">挂号日期</th>
                                 <th data-field="other" data-formatter="otherFormatter">功能</th>
                             </tr>
