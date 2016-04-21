@@ -1,0 +1,198 @@
+package com.mycompany.model;
+
+import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang.builder.ToStringStyle;
+import org.hibernate.search.annotations.Field;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+/**
+ * Created by liaoxiang on 2016/4/15.
+ */
+
+@Entity
+@Table(name = "patient")
+public class Patient extends BaseObject implements Serializable {
+
+    private Long id;
+    private String name;
+    private String no;
+    private Integer gender;
+    private Integer age;
+    private Date birthday;
+    private String department;
+    private Integer status;
+    private Date createDate;
+    private String birthdayStr;
+    private String createDateStr;
+    private String mobile;
+    private String openID;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    @Column
+    @Field
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+    @Column
+    @Field
+    public Integer getAge() {
+		return age;
+	}
+
+	public void setAge(Integer age) {
+		this.age = age;
+	}
+
+    @Column
+    @Field
+    public Date getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
+
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    @Column
+    @Field
+	public Date getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+    @Column
+    @Field
+	public String getNo() {
+		return no;
+	}
+
+	public void setNo(String no) {
+		this.no = no;
+	}
+
+
+    @Column
+    @Field
+	public Integer getGender() {
+		return gender;
+	}
+
+	public void setGender(Integer gender) {
+		this.gender = gender;
+	}
+    @Column
+    @Field
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+    @Column
+    @Field
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+    @Column
+    @Field
+    public String getOpenID() {
+        return openID;
+    }
+
+    public void setOpenID(String openID) {
+        this.openID = openID;
+    }
+
+    @Transient
+    public String getBirthdayStr() {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        if(birthday != null){
+            birthdayStr = format.format(birthday);
+        }
+        return birthdayStr;
+    }
+
+    public void setBirthdayStr(String birthdayStr) {
+        this.birthdayStr = birthdayStr;
+    }
+
+    @Transient
+    public String getCreateDateStr() {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd H:m:s");
+        if(createDate != null){
+            createDateStr = format.format(createDate);
+        }
+        return createDateStr;
+    }
+
+    public void setCreateDateStr(String createDateStr) {
+        this.createDateStr = createDateStr;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Role)) {
+            return false;
+        }
+
+        final Patient role = (Patient) o;
+
+        return !(name != null ? !name.equals(role.name) : role.name != null);
+
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public int hashCode() {
+        return (name != null ? name.hashCode() : 0);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public String toString() {
+        return new ToStringBuilder(this, ToStringStyle.SIMPLE_STYLE)
+                .append(this.name)
+                .toString();
+    }
+}
