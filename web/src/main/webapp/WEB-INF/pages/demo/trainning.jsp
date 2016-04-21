@@ -20,8 +20,8 @@
                             <div class="form-inline" role="form">
                                 <div class="form-group">
                                     <select id="queryStatus" name="queryStatus" class="form-control">
-                                        <option value="2">已缴费</option>
-                                        <option value="3">已结束</option>
+                                        <option value="3">已分诊</option>
+
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -227,6 +227,7 @@
                 $('#no').val(data.no);
                 $('#name').val(data.name);
                 $('#gender').val('男');
+                $('#mobile').val(data.mobile);
                 $('#birthday').val(data.birthdayStr);
                 $('#age').val(data.age);
                 $('#department').val(data.department);
@@ -244,14 +245,14 @@
     }
     function onAddUserClicked(id) {
         sendLedControl(id);
-        $('#modalTitle').html("新增挂号病人");
-        $('#no').val('');
-        $('#name').val('');
-        $('#gender').val('男');
-        $('#birthday').val('');
-        $('#age').val('');
-        $('#department').val('儿童健康科');
-
+        $('#modalTitle').html("智护训练");
+        $('#heightBefore').val('');
+        $('#heightNow').val('');
+        $('#weightBefore').val('');
+        $('#weightNow').val('');
+        $('#content').val('');
+        $('#result').val('');
+        $('#advise').val('');
         modalDialog.find("input[type='hidden']").prop("value", 0);
         modalDialog.modal('show');
     }
@@ -259,6 +260,7 @@
     function queryParams(params) {
         $('#toolbar').find('input[name]').each(function () {
             params[$(this).attr('name')] = $(this).val();
+            params[$(this).attr('department')] = '幼儿保健科';
         });
 
         params["status"] = $('#queryStatus').val();
@@ -282,6 +284,7 @@
             data: $("#addForm").serialize(),
             success: function (result) {
                 modalDialog.modal('hide');
+                $table.bootstrapTable('refresh');
             }
         });
     }

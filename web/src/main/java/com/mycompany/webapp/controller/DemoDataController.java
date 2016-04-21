@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -48,9 +51,17 @@ public class DemoDataController {
     }
 
     @RequestMapping(value = "/addPatient")
-    public Patient addPatient(Patient patient) {
+    public Patient addPatient(Patient patient) throws ParseException {
         logger.info("", patient);
         patient.setStatus(1);
+        SimpleDateFormat myFormatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date date=new Date();
+        Date mydate= myFormatter.parse(patient.getBirthdayStr());
+        patient.setBirthday(mydate);
+        long day=(date.getTime()-mydate.getTime())/(24*60*60*1000) + 1;
+        String year=new java.text.DecimalFormat("#").format(day/365f);
+        patient.setAge(Integer.valueOf(year));
+        patient.setCreateDate(new Date());
         patient = patientManager.save(patient);
         return patient;
     }
@@ -58,6 +69,9 @@ public class DemoDataController {
     @RequestMapping(value = "/addTrainning")
     public Trainning addTrainning(Trainning trainning) {
         logger.info("", trainning);
+        Patient patient = patientManager.get(trainning.getPatient_id());
+        patient.setStatus(4);
+        patientManager.save(patient);
         return trainningManager.save(trainning);
     }
 
@@ -95,7 +109,7 @@ public class DemoDataController {
         String openId = WeixinUtil.getOpenid(appid, secret, request);
         Patient p = patientManager.findByOpenID(openId);
         ModelMap model = new ModelMap();
-        model.addAttribute(openId);
+        model.addAttribute("openId", openId);
         if (p == null) {
             return new ModelAndView("/demo/bind", model);
         } else {

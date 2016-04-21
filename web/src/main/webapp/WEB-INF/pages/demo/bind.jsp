@@ -9,8 +9,10 @@
     <link href="${ctx}/scripts/demo/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="${ctx}/scripts/demo/bower_components/jquery/dist/jquery.min.js"></script>
 
+
     <!-- Bootstrap Core JavaScript -->
     <script src="${ctx}/scripts/demo/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="${ctx}/scripts/bootbox.min.js"></script>
 </head>
 <body>
 <div>

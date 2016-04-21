@@ -27,11 +27,10 @@
                                 </div>
                                 <div class="form-group">
                                     <select id="queryStatus" name="queryStatus" class="form-control">
-                                        <option value="1">未缴费</option>
-                                        <option value="2">已缴费</option>
-                                        <option value="3">sd3</option>
-                                        <option value="4">s4</option>
-                                        <option value="5">d5</option>
+                                        <option value="1">已挂号</option>
+                                        <option value="2">已开单</option>
+                                        <option value="3">已分诊</option>
+                                        <option value="4">已完成</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -129,10 +128,10 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="age" class="col-sm-2 control-label">年龄</label>
+                        <label for="mobile" class="col-sm-2 control-label">手机号码</label>
 
                         <div class="col-sm-4">
-                            <input name="age" type="text" class="form-control input-sm" id="age"/>
+                            <input name="mobile" type="text" class="form-control input-sm" id="mobile"/>
                         </div>
 
                         <label class="col-sm-2 control-label">挂号科室</label>
@@ -195,7 +194,7 @@
         $('#name').val('');
         $('#gender').val('1');
         $('#birthday').val('');
-        $('#age').val('');
+        $('#mobile').val('');
         $('#department').val('儿童健康科');
 
         modalDialog.find("input[type='hidden']").prop("value", 0);
@@ -254,6 +253,7 @@
                 if (result.id != null) {
                     $table.bootstrapTable('refresh');
                     modalDialog.modal('hide');
+                    $table.bootstrapTable('refresh');
                 } else {
                     bootbox.alert("保存失败");
                 }

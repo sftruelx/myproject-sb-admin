@@ -7,6 +7,7 @@ import org.hibernate.search.annotations.Field;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -85,6 +86,7 @@ public class Patient extends BaseObject implements Serializable {
     @Column
     @Field
 	public Date getCreateDate() {
+
 		return createDate;
 	}
 
@@ -173,16 +175,16 @@ public class Patient extends BaseObject implements Serializable {
         if(status!=null) {
             switch (status) {
                 case 1:
-                    statusStr = "已分配";
+                    statusStr = "已挂号";
                     break;
                 case 2:
-                    statusStr = "已分派";
+                    statusStr = "已开单";
                     break;
                 case 3:
-                    statusStr = "已完成";
+                    statusStr = "已分诊";
                     break;
                 case 4:
-                    statusStr = "已收费";
+                    statusStr = "已完成";
                     break;
             }
         }

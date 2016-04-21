@@ -85,7 +85,7 @@ public class WeixinController extends WeixinControllerSupport {
 		String title = "你的账号已关注儿童健康微信公众号，";
 		String description = "请点击查看全文或点击图片绑定账号再进行业务查询。";
 		String picUrl = "http://hjwadmin.ngrok.cc/images/banner2.jpg";
-		String url= "http://hjwadmin.ngrok.cc/bind?openId="+event.getFromUserName();
+		String url= "http://hjwadmin.ngrok.cc/demo/bind?openId="+event.getFromUserName();
 		newsMsg.add(title, description, picUrl, url);			
 		//log.debug(DdJsonUtils.toJSONString(newsMsg));		
 		return newsMsg;

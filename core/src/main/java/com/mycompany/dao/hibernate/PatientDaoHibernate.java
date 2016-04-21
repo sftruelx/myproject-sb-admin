@@ -46,6 +46,9 @@ public class PatientDaoHibernate extends GenericDaoHibernate<Patient, Long> impl
                 if (patient.getStatus() != null) {
                     criteria.add(Restrictions.eq("status", patient.getStatus()));
                 }
+                if (patient.getDepartment() != null) {
+                    criteria.add(Restrictions.eq("department", patient.getDepartment()));
+                }
             }
 
             String count = criteria.setProjection(Projections.rowCount()).uniqueResult().toString();
@@ -89,7 +92,7 @@ public class PatientDaoHibernate extends GenericDaoHibernate<Patient, Long> impl
 
     @Override
     public Trainning findByPatientId(Long patientId) {
-        Criteria criteria = this.getSession().createCriteria(Patient.class);
+        Criteria criteria = this.getSession().createCriteria(Trainning.class);
         criteria.add(Restrictions.eq("patient_id", patientId));
         List<Trainning> result = criteria.list();
         if (result.size() == 0) {

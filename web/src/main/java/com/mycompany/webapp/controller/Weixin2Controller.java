@@ -47,7 +47,7 @@ public class Weixin2Controller {
         main1.setKey("main1");
         main1.setName("自助服务");
 
-        MenuButton main1sub1 = new MenuButton();
+//        MenuButton main1sub1 = new MenuButton();
 //	        main1sub1.setKey("main1sub1");
 //	        main1sub1.setName("自助绑定");
 //	        main1sub1.setType(MenuType.VIEW);
@@ -57,10 +57,13 @@ public class Weixin2Controller {
         main1sub2.setKey("main1sub2");
         main1sub2.setName("我的报告");
         main1sub2.setType(MenuType.VIEW);
-        main1sub2.setUrl("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx41c9698b8348b7d6&redirect_uri=http://hjwadmin.ngrok.cc/demo/report&response_type=code&scope=snsapi_base&state=1#wechat_redirect");
+        //String reportUrl = "https%3A%2F%2Fhjwadmin.ngrok.cc%2Fdemo%2Freport";
+        String a = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="+appid+"&redirect_uri=http%3A%2F%2Fhjwadmin.ngrok.cc%2Fdemo%2Freport&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
+        //String url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + appid + "&redirect_uri=" + reportUrl + "&response_type=code&scope=snsapi_base&state=123#wechat_redirect";
+        main1sub2.setUrl(a);
 
         List<MenuButton> main1list = new ArrayList<MenuButton>();
-        main1list.add(main1sub1);
+//        main1list.add(main1sub1);
         main1list.add(main1sub2);
         //将子菜单放入主菜单里   主菜单1
         main1.setSubButton(main1list);
@@ -74,13 +77,13 @@ public class Weixin2Controller {
         main2sub1.setKey("main2sub1");
         main2sub1.setName("营养膳食");
         main2sub1.setType(MenuType.VIEW);
-        main2sub1.setUrl("http://http://hjwadmin.ngrok.cc/nutritionalDiet");
+        main2sub1.setUrl("http://hjwadmin.ngrok.cc/demo/nutritionalDiet");
 
         MenuButton main2sub2 = new MenuButton();
         main2sub2.setKey("main1sub2");
         main2sub2.setName("智护训练");
         main2sub2.setType(MenuType.VIEW);
-        main2sub2.setUrl("http://http://hjwadmin.ngrok.cc/lore");
+        main2sub2.setUrl("http://hjwadmin.ngrok.cc/demo/lore");
 
         List<MenuButton> main2list = new ArrayList<MenuButton>();
         main2list.add(main2sub1);

@@ -45,7 +45,7 @@
                                 </div>
                                 <label class="col-sm-1 control-label">状态</label>
                                 <div class="col-sm-2">
-                                    <form:input cssClass="form-control input-sm" path="status"/>
+                                    <form:input cssClass="form-control input-sm" path="statusStr"/>
                                 </div>
                                 <label class="col-sm-1 control-label">日期</label>
                                 <div class="col-sm-2">
