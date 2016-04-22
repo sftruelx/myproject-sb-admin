@@ -51,18 +51,22 @@ public class DemoDataController {
     }
 
     @RequestMapping(value = "/addPatient")
-    public Patient addPatient(Patient patient) throws ParseException {
-        logger.info("", patient);
-        patient.setStatus(1);
-        SimpleDateFormat myFormatter = new SimpleDateFormat("yyyy-MM-dd");
-        Date date=new Date();
-        Date mydate= myFormatter.parse(patient.getBirthdayStr());
-        patient.setBirthday(mydate);
-        long day=(date.getTime()-mydate.getTime())/(24*60*60*1000) + 1;
-        String year=new java.text.DecimalFormat("#").format(day/365f);
-        patient.setAge(Integer.valueOf(year));
-        patient.setCreateDate(new Date());
-        patient = patientManager.save(patient);
+    public Patient addPatient(Patient patient)  {
+        logger.info("xx", patient.toString());
+        try {
+            patient.setStatus(1);
+            SimpleDateFormat myFormatter = new SimpleDateFormat("yyyy-MM-dd");
+            Date date = new Date();
+            Date mydate = myFormatter.parse(patient.getBirthdayStr());
+            patient.setBirthday(mydate);
+            long day = (date.getTime() - mydate.getTime()) / (24 * 60 * 60 * 1000) + 1;
+            String year = new java.text.DecimalFormat("#").format(day / 365f);
+            patient.setAge(Integer.valueOf(year));
+            patient.setCreateDate(new Date());
+            patient = patientManager.save(patient);
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
         return patient;
     }
 

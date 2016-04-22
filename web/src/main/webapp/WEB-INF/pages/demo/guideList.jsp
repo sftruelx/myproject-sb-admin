@@ -107,7 +107,7 @@
                         <div class="col-lg-2 col-sm-2 control-label">
                             <label class="control-label">备注：</label>
                         </div>
-                        <textarea style="width: 460px;"></textarea>
+                        <textarea style="width: 360px;"></textarea>
                     </div>
                     <div class="row">
                         <div style="height: 50px"></div>

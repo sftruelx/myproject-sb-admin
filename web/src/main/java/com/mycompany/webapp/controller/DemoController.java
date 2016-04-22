@@ -9,12 +9,14 @@ import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 /**
  * Created by liaoxiang on 2016/4/14.
@@ -83,6 +85,13 @@ public class DemoController {
         return new ModelAndView("demo/guideList", model.asMap());
     }
 
+    @RequestMapping(value = "/getNO")
+    @ResponseBody
+    public String getNO(){
+        Random r = new Random(999999);
+        return "NO" + r.nextInt();
+    }
+
     @RequestMapping(value = "/bind")
     public ModelAndView bind(String openId) {
         Map model = new HashMap();
@@ -120,6 +129,5 @@ public class DemoController {
     public String noReport() {
         return "/demo/noReport";
     }
-
 
 }

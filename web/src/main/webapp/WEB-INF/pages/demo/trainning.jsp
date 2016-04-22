@@ -67,18 +67,19 @@
         </div>
     </div>
 </div>
-<div style="margin: 150px auto;height: 800px" id="user-dialog" class="modal modal_align fade bs-example-modal-lg"
+<div style="height: 800px" id="user-dialog" class="modal modal_align fade bs-example-modal-lg"
      tabindex="-1"
      role="dialog"
      aria-labelledby="myLargeModalLabel" style="display:none;">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="modalTitle"></h4>
-            </div>
-            <div class="modal-body">
-                <form id="addForm" role="form" class="form-horizontal">
+            <form id="addForm" role="form" class="form-horizontal">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="modalTitle"></h4>
+                </div>
+                <div class="modal-body">
+
                     <input type="hidden" id="submit-type" value="0"/>
                     <div class="row">
                         <div class="col-sm-12">
@@ -184,13 +185,15 @@
                             </div>
                         </div>
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                <button type="submit" class="btn btn-primary" onclick="onSubmitModal();">提交
-                </button>
-            </div>
+
+                </div>
+            </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="submit" class="btn btn-primary" onclick="onSubmitModal();">提交
+                    </button>
+                </div>
+
         </div>
     </div>
 </div>

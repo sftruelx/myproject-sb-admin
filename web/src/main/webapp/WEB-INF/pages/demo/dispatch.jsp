@@ -31,6 +31,7 @@
                                         <option value="2">已开单</option>
                                         <option value="3">已分诊</option>
                                         <option value="4">已完成</option>
+                                        <option value="">全部</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -57,9 +58,9 @@
                                data-sort-order="desc">
                             <thead>
                             <tr>
-                                <th data-field="id">门诊号码</th>
+                                <th data-field="no">门诊号码</th>
                                 <th data-field="name">姓名</th>
-                                <th data-field="genderStr">姓名</th>
+                                <th data-field="genderStr">性别</th>
                                 <th data-field="age">年龄</th>
                                 <th data-field="birthdayStr">出生日期</th>
                                 <th data-field="department">挂号科室</th>
@@ -80,25 +81,26 @@
      aria-labelledby="myLargeModalLabel" style="display:none;">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="modalTitle"></h4>
-            </div>
-            <div class="modal-body">
-                <form id="addForm" role="form" class="form-horizontal">
+            <form id="addForm" role="form" class="form-horizontal">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="modalTitle"></h4>
+                </div>
+                <div class="modal-body">
+
                     <input type="hidden" id="submit-type" value="0"/>
 
                     <div class="form-group">
                         <label for="no" class="col-sm-2 control-label">门诊号码</label>
 
                         <div class="col-sm-4">
-                            <input type="text" class="form-control input-sm" name="no" id="no"/>
+                            <input type="text" class="form-control" name="no" id="no"/>
                         </div>
 
                         <label for="name" class="col-sm-2 control-label">姓名</label>
 
                         <div class="col-sm-4">
-                            <input name="name" type="text" class="form-control input-sm" id="name"/>
+                            <input name="name" type="text" class="form-control" id="name"/>
                         </div>
                     </div>
 
@@ -113,15 +115,8 @@
                         </div>
 
                         <label for="birthday" class="col-sm-2 control-label">出生年月</label>
-
-                        <%--<div class="input-group birthday form_datetime col-md-4">--%>
-                        <%--<input id="birthday" class="form-control input-sm" size="16" type="text" value="" readonly>--%>
-                        <%--<span class="input-group-addon"><span id="dateClose"--%>
-                        <%--class="glyphicon glyphicon-remove"></span></span>--%>
-                        <%--</div>--%>
-
                         <div class="input-append birthday form_datetime col-sm-4">
-                            <input name="birthdayStr" id="birthday" class="form-control input-sm" size="16" type="text">
+                            <input name="birthdayStr" id="birthday" class="form-control input-sm" size="16" type="text" >
                             <span class="add-on"><i class="icon-remove"></i></span>
                             <span class="add-on"><i class="icon-th"></i></span>
                         </div>
@@ -138,19 +133,18 @@
                         <div class="col-sm-4">
                             <select class="form-control" name="department" id="department">
                                 <option value="儿童健康科">儿童健康科</option>
-                                <option value="内科">内科</option>
-                                <option value="外科">外科</option>
-                                <option value="妇科">妇科</option>
+                                <option value="幼儿保健科">幼儿保健科</option>
                             </select>
                         </div>
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                <button type="submit" class="btn btn-primary" onclick="onSubmitModal();">提交
-                </button>
-            </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="submit" class="btn btn-primary" >提交</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -160,7 +154,10 @@
             $ok = $('#ok');
 
     $(function () {
-        modalDialog = $("#user-dialog");
+        modalDialog = $("#user-dialog").on('shown.bs.modal', function (e) {
+            $('#name').focus();
+        });
+
         $('#birthday').datetimepicker({
             weekStart: 1,
             todayBtn: 1,
@@ -182,23 +179,63 @@
             $table.bootstrapTable('refresh');
 
         });
+
+        $("#addForm").bootstrapValidator({
+            message: 'This value is not valid',
+            submitButtons: 'button[type="submit"]',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                name: {
+                    message: 'The username is not valid',
+                    validators: {
+                        notEmpty: {
+                            message: '请输入姓名'
+                        }
+                    }
+                },
+                mobile: {
+                    validators: {
+                        notEmpty: {
+                            message: '请输入手机号码'
+                        },
+                        regexp: {
+                            regexp: /^((\d3)|(\d{3}\-))?13[0-9]\d{8}|15[89]\d{8}/,
+                            message: '请输入11位数的手机号码'
+                        }
+                    }
+                }
+            }
+        }).on('success.form.bv', function (e) {
+   /*         e.preventDefault();*/
+            onSubmitModal();
+
+            $("#addForm").data('bootstrapValidator').resetForm();
+        });;
     })
+
 
     $('#dateClose').click(function () {
         $('#birthday').val('');
     });
 
     function onAddUserClicked() {
+
+
         $('#modalTitle').html("新增挂号病人");
         $('#no').val('');
+        getNO();
         $('#name').val('');
         $('#gender').val('1');
         $('#birthday').val('');
         $('#mobile').val('');
-        $('#department').val('儿童健康科');
-
         modalDialog.find("input[type='hidden']").prop("value", 0);
         modalDialog.modal('show');
+
+
     }
 
     function queryParams(params) {
@@ -244,23 +281,49 @@
     }
 
     function onSubmitModal() {
+
+
+     $.post(
+         '<%=request.getContextPath()%>/demo/addPatient',
+         $("#addForm").serialize(),
+         function(data){
+             if (data.id != null) {
+                 modalDialog.modal('hide');
+                 $table.bootstrapTable('refresh');
+             } else {
+                 bootbox.alert("保存失败");
+             }
+         }
+     );
+/*
         $.ajax({
             url: '<%=request.getContextPath()%>/demo/addPatient',
             type: 'post',
+            dataType: 'json',
             data: $("#addForm").serialize(),
             success: function (result) {
-                console.log(result);
                 if (result.id != null) {
-                    $table.bootstrapTable('refresh');
                     modalDialog.modal('hide');
                     $table.bootstrapTable('refresh');
                 } else {
                     bootbox.alert("保存失败");
                 }
             }
-        });
+        });*/
     }
 
+    function getNO() {
+        $.post(
+                '<%=request.getContextPath()%>/demo/getNO',
+                null,
+                function(data){
+                    if (data!= null) {
+                        $('#no').val(data);
+                    } else {
+                        bootbox.alert("保存失败");
+                    }
+                });
+    }
 
 </script>
 </body>

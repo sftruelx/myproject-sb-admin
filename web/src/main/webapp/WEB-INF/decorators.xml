@@ -9,6 +9,7 @@
         <pattern>/demo/guideList/*</pattern>
         <pattern>/demo/nutritionalDiet*</pattern>
         <pattern>/demo/report*</pattern>
+        <pattern>/demo/noReport*</pattern>
     </excludes> 
     <decorator name="default" page="default.jsp">
         <pattern>/test*</pattern>

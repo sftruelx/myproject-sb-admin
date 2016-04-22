@@ -197,7 +197,7 @@ public class Patient extends BaseObject implements Serializable {
 
     @Transient
     public String getCreateDateStr() {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd H:m:s");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         if(createDate != null){
             createDateStr = format.format(createDate);
         }

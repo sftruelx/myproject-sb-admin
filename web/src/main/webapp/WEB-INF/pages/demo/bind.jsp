@@ -16,6 +16,7 @@
 </head>
 <body>
 <div>
+    <img src="/images/logo-01.png" width="90%">
     <input hidden id="openId" value="${openId}"/>
     <div style="padding-top: 5%;padding-left: 3%" class="input-group">
         <span class="input-group-addon">姓名：</span>

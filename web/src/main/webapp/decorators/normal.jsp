@@ -14,7 +14,7 @@
     <!-- Bootstrap Core CSS -->
     <link href="${ctx}/scripts/demo/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="${ctx}/scripts/demo/css/bootstrap-datetimepicker.css" rel="stylesheet">
-
+    <link href="${ctx}/scripts/demo/css/bootstrapValidator.min.css" rel="stylesheet">
     <!-- MetisMenu CSS -->
     <link href="${ctx}/scripts/demo/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
 
@@ -40,7 +40,8 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="${ctx}/scripts/demo/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
+    <script src="${ctx}/scripts/demo/js/bootstrapValidator.min.js"></script>
+    <script src="${ctx}/scripts/demo/js/language/zh_CN.js"></script>
     <!-- Metis Menu Plugin JavaScript -->
     <script src="${ctx}/scripts/demo/bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
@@ -81,47 +82,9 @@
                 </a>
                 <ul class="dropdown-menu dropdown-messages">
                     <li>
-                        <a href="#">
-                            <div>
-                                <strong>John Smith</strong>
-                                    <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-                            </div>
-                            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                        </a>
+                        <img src="/images/erweima.png"/>
                     </li>
                     <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <strong>John Smith</strong>
-                                    <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-                            </div>
-                            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <strong>John Smith</strong>
-                                    <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-                            </div>
-                            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a class="text-center" href="#">
-                            <strong>Read All Messages</strong>
-                            <i class="fa fa-angle-right"></i>
-                        </a>
-                    </li>
                 </ul>
                 <!-- /.dropdown-messages -->
             </li>
