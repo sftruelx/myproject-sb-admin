@@ -22,20 +22,24 @@
     <script src="${ctx}/scripts/demo/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div id="page-wrapper" style="padding-left: 25%">
-    <div class="row">
-        <div class="col-lg-12">
-            <h3 class="page-header">打印检查指引单</h3>
-        </div>
-        <!-- /.col-lg-12 -->
-    </div>
+<div id="page-wrapper">
     <!-- /.row -->
     <form:form action="#" method="post" commandName="patient" class="form-horizontal">
+        <div class="col-lg-8 text-center">
+            <img src="/images/logo-01.png">
+        </div>
+        <div class="row text-center">
+            <div class="col-lg-8">
+                <h3 class="page-header">打印检查指引单</h3>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
         <div class="row">
-            <div class="col-lg-6">
-                <div class="panel panel-default">
+            <div class="col-lg-8">
+                <div>
                     <div class="panel-heading">
                         <div class="form-group">
+                            <div class="col-sm-2"></div>
                             <label class="col-sm-2 control-label">姓名：</label>
                             <div class="col-sm-2">
                                 <label class="control-label">${patient.name}</label>
@@ -46,6 +50,7 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <div class="col-sm-2"></div>
                             <label class="col-sm-2 control-label">年龄：</label>
                             <div class="col-sm-2">
                                 <label class="control-label"> ${patient.age}</label>
@@ -57,6 +62,7 @@
                         </div>
 
                         <div class="form-group">
+                            <div class="col-sm-2"></div>
                             <label class="col-sm-2 control-label">状态：</label>
                             <div class="col-sm-2">
                                 <label class="control-label">${patient.statusStr}</label>
@@ -68,58 +74,53 @@
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-default">
+                <div>
                     <div style="height: 50px"></div>
-                    <div class="row">
-                        <div class="col-lg-2 col-sm-2 control-label">
-                            <label class="control-label">项目：</label>
+
+                    <div class="form-group">
+                        <div class="col-sm-2"></div>
+                        <label class="col-sm-2 control-label">项目：</label>
+                        <div class="checkbox col-sm-2">
+                            <label>
+                                <input type="checkbox" checked="checked" value="">智护训练
+                            </label>
+                        </div>
+
+                        <label class="col-sm-2 control-label">诊室：</label>
+                        <div class="col-sm-2">
+                            <label class="control-label">212诊室</label>
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-lg-1"></div>
-                        <div class="form-group col-sm-12">
-                            <div class="col-lg-1"></div>
-                            <div class="checkbox col-sm-2">
-                                <label>
-                                    <input type="checkbox" checked="checked" value="">智护训练
-                                </label>
-                            </div>
-
-                            <label class="col-sm-2 control-label">诊室：</label>
-                            <div class="col-sm-2">
-                                <label class="control-label">212诊室</label>
-                            </div>
-
-                            <label class="col-sm-2 control-label">护士：</label>
-                            <div class="col-sm-2">
-                                <label class="control-label">赵敏</label>
-                            </div>
-                        </div>
-
-                        <div class="form-group col-sm-12">
-                            <div class="col-lg-1"></div>
-                        212诊室在本栋楼2楼212房，无特殊事项
+                    <div class="form-group">
+                        <div class="col-sm-2"></div>
+                        <label class="col-sm-2 control-label">护士：</label>
+                        <div class="checkbox col-sm-2">
+                            <label>赵敏</label>
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-lg-2 col-sm-2 control-label">
-                            <label class="control-label">备注：</label>
+                    <div class="form-group">
+                        <div class="col-sm-2"></div>
+                        <label class="col-sm-2 control-label">备注：</label>
+                        <div class="checkbox col-sm-4">
+                            <label>212诊室在本栋楼2楼212房，无特殊事项</label>
                         </div>
-                        <textarea style="width: 360px;"></textarea>
                     </div>
-                    <div class="row">
+
+
+                    <div class="form-group">
                         <div style="height: 50px"></div>
-                        <div class="col-sm-12">
-                            <div class="col-lg-1"></div>
-                            <div class="col-sm-5">
-                                <label class="control-label">申请人：小昭</label>
-                            </div>
 
-                            <div class="col-sm-5">
-                                <label class="control-label">时间：</label> <label class="control-label"> ${dateStr}</label>
-                            </div>
+                        <div class="col-sm-2"></div>
+                        <label class="col-sm-2 control-label">申请人：</label>
+                        <div class="checkbox col-sm-2">
+                            <label>小昭</label>
+                        </div>
+
+                        <label class="col-sm-2 control-label">时间：</label>
+                        <div class="checkbox col-sm-2">
+                            <label>${dateStr}</label>
                         </div>
                     </div>
                     <div style="height: 50px"></div>

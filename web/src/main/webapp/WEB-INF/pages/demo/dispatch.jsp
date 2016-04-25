@@ -156,6 +156,8 @@
     $(function () {
         modalDialog = $("#user-dialog").on('shown.bs.modal', function (e) {
             $('#name').focus();
+        }).on('hide.bs.modal',function () {
+            $("#addForm").data('bootstrapValidator').resetForm();
         });
 
         $('#birthday').datetimepicker({
@@ -233,6 +235,7 @@
         $('#birthday').val('');
         $('#mobile').val('');
         modalDialog.find("input[type='hidden']").prop("value", 0);
+        $("#addForm").data('bootstrapValidator').resetForm(true);
         modalDialog.modal('show');
 
 

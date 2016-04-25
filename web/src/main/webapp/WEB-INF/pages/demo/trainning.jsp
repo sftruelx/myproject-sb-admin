@@ -67,7 +67,7 @@
         </div>
     </div>
 </div>
-<div style="height: 800px" id="user-dialog" class="modal modal_align fade bs-example-modal-lg"
+<div id="user-dialog" class="modal modal_align fade bs-example-modal-lg"
      tabindex="-1"
      role="dialog"
      aria-labelledby="myLargeModalLabel" style="display:none;">
@@ -120,7 +120,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">出生日期</label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control input-sm" name="birthday" id="birthday"/>
+                                    <input type="text" class="form-control input-sm" id="birthday"/>
                                 </div>
                             </div>
                         </div>
